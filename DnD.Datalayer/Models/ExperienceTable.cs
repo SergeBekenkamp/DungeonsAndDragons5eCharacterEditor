@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DnD.Datalayer.models;
 
-namespace DnD.Service
+namespace DnD.Datalayer.Models
 {
-    public class Class1
+    public class ExperienceTable : BaseModel
     {
+       
     }
 }

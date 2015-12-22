@@ -100,8 +100,20 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DungeonsAndDragons\DnD.Web.csproj">
-      <Project>{39325AD0-0B3B-4A98-B24E-5085BFF7E883}</Project>
+    <ProjectReference Include="..\DnD.Core\DnD.Core.csproj">
+      <Project>{e6760c34-d8b1-4b8c-be2d-1ff7db95e352}</Project>
+      <Name>DnD.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DnD.Datalayer\DnD.DataLayer.csproj">
+      <Project>{a391f521-882f-4faf-aaa7-cbe74bfcab5d}</Project>
+      <Name>DnD.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DnD.Service\DnD.Service.csproj">
+      <Project>{12c5e926-3f4c-4035-982c-70a896ffa7aa}</Project>
+      <Name>DnD.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DnD.Web\DnD.Web.csproj">
+      <Project>{39325ad0-0b3b-4a98-b24e-5085bff7e883}</Project>
       <Name>DnD.Web</Name>
     </ProjectReference>
   </ItemGroup>

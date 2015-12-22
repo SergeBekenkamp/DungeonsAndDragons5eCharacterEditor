@@ -12,7 +12,7 @@ using DungeonsAndDragons.Models;
 
 namespace DungeonsAndDragons.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

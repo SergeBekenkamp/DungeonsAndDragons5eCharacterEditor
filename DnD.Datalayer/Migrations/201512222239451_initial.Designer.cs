@@ -13,7 +13,7 @@ namespace DnD.Datalayer.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512211751425_initial"; }
+            get { return "201512222239451_initial"; }
         }
         
         string IMigrationMetadata.Source
