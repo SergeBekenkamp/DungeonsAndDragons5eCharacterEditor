@@ -11,7 +11,20 @@ namespace DnD.Datalayer.models
 {
     public class BaseModel : IBaseModel
     {
+        public BaseModel()
+        {
+            DateCreated = DateTimeOffset.Now;
+        }
+
         [Index]
         public int Id { get; set; }
+
+        public DateTimeOffset DateCreated { get; set; }
+
+        public DateTimeOffset DateUpdated
+        {
+            get { return DateTimeOffset.Now; }
+            private set { }
+        }
     }
 }

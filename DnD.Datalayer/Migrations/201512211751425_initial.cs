@@ -13,6 +13,8 @@ namespace DnD.Datalayer.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        DateCreated = c.DateTimeOffset(nullable: false, precision: 7),
+                        DateUpdated = c.DateTimeOffset(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Id);
@@ -26,6 +28,8 @@ namespace DnD.Datalayer.Migrations
                         Name = c.String(),
                         Level = c.Int(nullable: false),
                         Experience = c.Int(nullable: false),
+                        DateCreated = c.DateTimeOffset(nullable: false, precision: 7),
+                        DateUpdated = c.DateTimeOffset(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.CharacterClasses", t => t.ClassId, cascadeDelete: true)
