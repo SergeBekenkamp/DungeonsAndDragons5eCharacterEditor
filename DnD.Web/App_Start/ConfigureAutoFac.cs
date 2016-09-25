@@ -22,7 +22,7 @@ namespace DungeonsAndDragons.App_Start
             var builder = new ContainerBuilder();
 
             builder.RegisterType<DnDContext>().AsSelf().InstancePerRequest();
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             RegisterEssentials(builder);

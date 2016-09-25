@@ -1,3 +1,7 @@
+using DnD.Core;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace DnD.Datalayer.Migrations
 {
     using System;
@@ -14,6 +18,18 @@ namespace DnD.Datalayer.Migrations
 
         protected override void Seed(DnD.Datalayer.Context.DnDContext context)
         {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            if (!roleManager.RoleExists(AuthorizationConstants.AdminRole))
+            {
+                roleManager.Create(new IdentityRole(AuthorizationConstants.AdminRole));
+            }
+
+            if (!roleManager.RoleExists(AuthorizationConstants.UserRole))
+            {
+                roleManager.Create(new IdentityRole(AuthorizationConstants.UserRole));
+            }
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

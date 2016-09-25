@@ -6,9 +6,15 @@ using System.Web.Http;
 using System.Web.Mvc;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using DnD.Datalayer.Context;
+using DnD.Web;
 using DungeonsAndDragons.App_Start;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
@@ -48,6 +54,35 @@ namespace DungeonsAndDragons
             app.UseAutofacWebApi(config);
             app.UseWebApi(config);
             ConfigureAuth(app);
+        }
+
+        public void ConfigureAuth(IAppBuilder app)
+        {
+            app.CreatePerOwinContext(DnDContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+
+            //var OAuthServerOptions = new OAuthAuthorizationServerOptions
+            //{
+            //    AllowInsecureHttp = true,
+            //    TokenEndpointPath = new PathString("/token"),
+            //    AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+            //    Provider = new SimpleAuthorizationServerProvider()
+            //};
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                CookieHttpOnly = false,
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                //ExpireTimeSpan =  TimeSpan.FromDays(2),
+                CookieSecure = CookieSecureOption.Always,
+                //Provider = new SimpleCookieAuthorizationServerProvider(),
+                AuthenticationMode = AuthenticationMode.Active
+            });
+
+
+            // app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
     }
 }

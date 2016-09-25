@@ -25,8 +25,6 @@ namespace DnD.Service.Services
             character.Name = "RandomFuckingName";
             character.Experience = 9001;
             repo.Create(character);
-
-
             return character;
         }
 

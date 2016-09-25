@@ -58,6 +58,7 @@ namespace DnD.Service.Services
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!disposed)
